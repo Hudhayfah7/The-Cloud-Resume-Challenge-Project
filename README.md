@@ -48,6 +48,9 @@ The bucket policy statement was copied into S3 from CloudFront and it ensured me
 
 <img width="677" height="413" alt="image" src="https://github.com/user-attachments/assets/435e3c63-f8c0-4926-ac1e-6e8717ae11c1" />
 
-Lastly, I created an SSL/TLS certificate in ACM and attached it to the CloudFront distribution so the site would be served securely over HTTPS. Finally, I configured Amazon Route 53 to route my domain’s traffic to the CloudFront distribution. 
+Lastly, I purchased a domain from namecheap.com and configured the custom domain. I created an SSL/TLS certificate in ACM and attached it to the CloudFront distribution so the site would be served securely over HTTPS. Finally, I configured Amazon Route 53 to route my domain’s traffic to the CloudFront distribution. The alternate domain used was khalidresume.hudhayfah.cloud.
+
+<img width="1844" height="574" alt="image" src="https://github.com/user-attachments/assets/2ad8fa56-356f-49ff-ac41-2f2a3113c418" />
+
 
 # Part 2: Building the Backend
