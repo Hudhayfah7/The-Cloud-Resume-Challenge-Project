@@ -54,3 +54,21 @@ Lastly, I purchased a domain from namecheap.com and configured the custom domain
 
 
 # Part 2: Building the Backend
+# Building the API
+
+First, I created a DynamoDB table to store the view count. This table contains a single item with a unique primary key (id) and an attribute called views, which holds the current number of page visits.
+
+<img width="759" height="107" alt="image" src="https://github.com/user-attachments/assets/1b715e9e-d6c4-406c-87ab-354c3f07e68c" />
+
+I then developed an AWS Lambda function using Python and the Boto3 SDK. Every time the website loads, a request is sent to this Lambda function via Amazon API Gateway. The function reads the current view count from DynamoDB, increments it by one, and writes the updated value back to the table.
+This process happens dynamically and in real-time, allowing the counter displayed on the website to update automatically with each visit. Because Lambda is serverless, it scales automatically and only runs when triggered, making the solution cost-effective and efficient. DynamoDB ensures fast, reliable data storage with low latency.
+This architecture demonstrates the use of cloud-native services to create a scalable and automated visitor tracking system without managing any traditional servers.
+
+<img width="716" height="428" alt="image" src="https://github.com/user-attachments/assets/26d5d9c4-c86d-465c-8943-18dd72e46240" />
+
+Next, I created a JavaScript code in order to create a visitor counter that displays how many people have accessed the site. 
+The JavaScript code is not talking directly to the DynamoDB.
+Instead, Amazon API Gateway is set with one POST route, proxying request to a Lambda function responsible for updating a visitor counter.
+
+
+
