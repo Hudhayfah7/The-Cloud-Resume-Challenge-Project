@@ -75,7 +75,7 @@ Instead, Amazon API Gateway is set with one POST route, proxying request to a La
 
 <img width="299" height="259" alt="image" src="https://github.com/user-attachments/assets/d3fd8c76-0fe2-449d-8b83-b3fbecaa5717" />
 The value coming from DynamoDB through AWS Lambda into the JavaScript code, allows the page to dynamically count and display the visitors number. Upon completion of this step my my frontend and backend have fully been integrated.
-
+ 
 
 
 
