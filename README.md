@@ -67,7 +67,7 @@ This architecture demonstrates the use of cloud-native services to create a scal
 <img width="671" height="601" alt="image" src="https://github.com/user-attachments/assets/e3e6948d-f2bc-403f-979e-0ddee05907ed" />
 
 
-Next, I created a JavaScript code in order to create a visitor counter that displays how many people have accessed the site. 
+Next, I created a JavaScript code, that was embedded in my html file, in order to create a visitor counter that displays how many people have accessed the site. 
 The JavaScript code is not talking directly to the DynamoDB.
 Instead, Amazon API Gateway is set with one POST route, proxying request to a Lambda function responsible for updating a visitor counter.
 
