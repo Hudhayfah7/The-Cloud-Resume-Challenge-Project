@@ -171,7 +171,6 @@ This was caused by:
 CORS failing (fixed earlier), or
 Cached HTML serving old JS, or
 Frontend not being refreshed through CloudFront.
-Fix
 Once CORS and CloudFront invalidation were resolved, the fetch request worked correctly.
 
 
