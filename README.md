@@ -8,7 +8,7 @@ You create a simple resume webpage.
 Store it in Amazon S3 as a static website.
 2. CloudFront
 You serve your site globally using CloudFront CDN.
-3. DNS (Route 53)
+3. DNS (Route 53) 
 Connect a domain name (optional but recommended).
 4. Visitor Counter
 Your site has a real-time visitor counter: 
