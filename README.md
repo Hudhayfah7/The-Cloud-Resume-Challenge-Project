@@ -75,19 +75,32 @@ Instead, Amazon API Gateway is set with one POST route, proxying request to a La
 
 <img width="299" height="259" alt="image" src="https://github.com/user-attachments/assets/d3fd8c76-0fe2-449d-8b83-b3fbecaa5717" />
 The value coming from DynamoDB through AWS Lambda into the JavaScript code, allows the page to dynamically count and display the visitors number. Upon completion of this step my my frontend and backend have fully been integrated.
- 
 
+# Automated Deployment (CI/CD)
+I implemented a GitHub Actions–based CI/CD pipeline that deploys my Cloud Resume Challenge website automatically. By pushing updates to the main branch, the workflow syncs my HTML/CSS/JS files directly to Amazon S3 using secure GitHub Secrets. This removes the need for manual uploads and ensures fast, consistent deployments. The final architecture integrates GitHub Actions, IAM, S3, and CloudFront for a professional, production-grade workflow.
 
+<img width="1024" height="1536" alt="image" src="https://github.com/user-attachments/assets/a7a60375-83a9-48f9-b34c-fe1d9099c89a" />
 
-
-
-
-
-
-
-
-
-
+# Infrastructure-as-Code (IaC) Decision – Why I Didn’t Use Terraform
+As part of the Cloud Resume Challenge, many participants choose to automate their infrastructure using Terraform or AWS SAM/CDK. While Infrastructure-as-Code is a recommended best practice, it is not a mandatory requirement of the challenge. The purpose of the challenge is to demonstrate real cloud skills, and IaC is one of several optional enhancements.
+In my implementation, I focused on building the project using native AWS services and manual provisioning to ensure I fully understood each component before automating it. This helped me gain hands-on experience with:
+S3 static website hosting
+CloudFront CDN
+DynamoDB for tracking view counts
+IAM permissions
+Lambda (Python) for backend logic
+API Gateway & CORS configuration
+GitHub Actions CI/CD pipeline
+Although I did not use Terraform for this version, the design and architecture of my resume site are fully IaC-ready. I plan to introduce Terraform in a later phase to automate:
+S3 bucket creation and static website configuration
+CloudFront distribution
+DynamoDB table infrastructure
+Lambda + IAM roles
+API Gateway endpoints
+CI/CD workflow integration
+This phased approach allowed me to first master the AWS fundamentals, then progressively introduce automation tools such as Terraform as an enhancement rather than a dependency.
+Outcome:
+Even without Terraform, I successfully built a fully serverless, cloud-hosted resume platform with automated deployments and a real-time view counter — achieving the core goals of the Cloud Resume Challenge.
 
 
 # Problem that occured during the Project
@@ -118,29 +131,7 @@ Used ExpressionAttributeNames to alias it:
 UpdateExpression="SET #v = if_not_exists(#v, :start) + :inc",
 ExpressionAttributeNames={'#v': 'views'}
 
-3. Writing to Wrong Item ID
-Problem
-My earlier Lambda code read from:
-Key={'id': '0'}
-…but wrote back to:
-'id': '1'
-Cause
-This created a mismatch: item “0” never updated, causing crashes later when it was missing attributes.
-Fix
-Wrote back to the same key:
-'id': '0'
-
-4. Missing DynamoDB Item
-Problem
-get_item() failed because id = 0 didn’t exist yet.
-Fix
-Manually created the item in DynamoDB:
-{
-  "id": "0",
-  "views": 0
-}
-
-5. CORS Error: “Access-Control-Allow-Origin cannot contain more than one origin”
+3. CORS Error: “Access-Control-Allow-Origin cannot contain more than one origin”
 Problem
 Browser console showed:
 Access-Control-Allow-Origin cannot contain more than one origin.
@@ -151,27 +142,7 @@ Ensured Lambda returned ONLY this header:
 "Access-Control-Allow-Origin": "*"
 No duplicates, no extra spaces, no arrays.
 
-6. CloudFront Cache Not Updating
-Problem
-HTML changes did not appear (counter stuck showing “Error”).
-Cause
-CloudFront was serving a cached version of the old index.html.
-Fix
-Created an invalidation:
-/*
-CloudFront then fetched the new HTML + JS and the counter updated correctly.
 
-7. Frontend Could Not Hit Lambda URL (Failed Fetch)
-Problem
-Browser console showed:
-Failed to load resource due to access control checks.
-TypeError: Load failed
-Cause
-This was caused by:
-CORS failing (fixed earlier), or
-Cached HTML serving old JS, or
-Frontend not being refreshed through CloudFront.
-Once CORS and CloudFront invalidation were resolved, the fetch request worked correctly.
 
 
 
