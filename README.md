@@ -64,11 +64,115 @@ I then developed an AWS Lambda function using Python and the Boto3 SDK. Every ti
 This process happens dynamically and in real-time, allowing the counter displayed on the website to update automatically with each visit. Because Lambda is serverless, it scales automatically and only runs when triggered, making the solution cost-effective and efficient. DynamoDB ensures fast, reliable data storage with low latency.
 This architecture demonstrates the use of cloud-native services to create a scalable and automated visitor tracking system without managing any traditional servers.
 
-<img width="716" height="428" alt="image" src="https://github.com/user-attachments/assets/26d5d9c4-c86d-465c-8943-18dd72e46240" />
+<img width="671" height="601" alt="image" src="https://github.com/user-attachments/assets/e3e6948d-f2bc-403f-979e-0ddee05907ed" />
+
 
 Next, I created a JavaScript code in order to create a visitor counter that displays how many people have accessed the site. 
 The JavaScript code is not talking directly to the DynamoDB.
 Instead, Amazon API Gateway is set with one POST route, proxying request to a Lambda function responsible for updating a visitor counter.
+
+<img width="784" height="663" alt="image" src="https://github.com/user-attachments/assets/416b774e-5bd5-4dc9-90c4-521fc9522c57" />
+
+<img width="299" height="259" alt="image" src="https://github.com/user-attachments/assets/d3fd8c76-0fe2-449d-8b83-b3fbecaa5717" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Problem that occured during the Project
+Cloud Resume View Counter — Issues Encountered & How They Were Fixed
+Throughout implementing the serverless view counter for my Cloud Resume Challenge, I encountered several issues across Lambda, IAM, DynamoDB, CORS, CloudFront caching, and frontend JavaScript. Below is a detailed breakdown of each problem and how it was resolved.
+
+1. DynamoDB UpdateItem Failed (AccessDeniedException)
+Problem
+My Lambda function failed with:
+AccessDeniedException: User is not authorized to perform dynamodb:UpdateItem
+Cause
+The Lambda execution role did not have permissions to access my DynamoDB table (cloudresume-test).
+Fix
+In IAM → Roles → MyResumeCounterFunction-role, I attached a policy allowing:
+dynamodb:GetItem
+dynamodb:UpdateItem
+On the specific table ARN.
+This allowed Lambda to update the view count successfully.
+
+2. Reserved Keyword Error for “views”
+Problem
+Lambda threw:
+Invalid UpdateExpression: Attribute name is a reserved keyword
+Cause
+DynamoDB treats views as a reserved keyword, so it cannot be used directly inside an UpdateExpression.
+Fix
+Used ExpressionAttributeNames to alias it:
+UpdateExpression="SET #v = if_not_exists(#v, :start) + :inc",
+ExpressionAttributeNames={'#v': 'views'}
+
+3. Writing to Wrong Item ID
+Problem
+My earlier Lambda code read from:
+Key={'id': '0'}
+…but wrote back to:
+'id': '1'
+Cause
+This created a mismatch: item “0” never updated, causing crashes later when it was missing attributes.
+Fix
+Wrote back to the same key:
+'id': '0'
+
+4. Missing DynamoDB Item
+Problem
+get_item() failed because id = 0 didn’t exist yet.
+Fix
+Manually created the item in DynamoDB:
+{
+  "id": "0",
+  "views": 0
+}
+
+5. CORS Error: “Access-Control-Allow-Origin cannot contain more than one origin”
+Problem
+Browser console showed:
+Access-Control-Allow-Origin cannot contain more than one origin.
+Cause
+Lambda (or API Gateway) was returning multiple CORS headers or an incorrectly formatted header.
+Fix
+Ensured Lambda returned ONLY this header:
+"Access-Control-Allow-Origin": "*"
+No duplicates, no extra spaces, no arrays.
+
+6. CloudFront Cache Not Updating
+Problem
+HTML changes did not appear (counter stuck showing “Error”).
+Cause
+CloudFront was serving a cached version of the old index.html.
+Fix
+Created an invalidation:
+/*
+CloudFront then fetched the new HTML + JS and the counter updated correctly.
+
+7. Frontend Could Not Hit Lambda URL (Failed Fetch)
+Problem
+Browser console showed:
+Failed to load resource due to access control checks.
+TypeError: Load failed
+Cause
+This was caused by:
+CORS failing (fixed earlier), or
+Cached HTML serving old JS, or
+Frontend not being refreshed through CloudFront.
+Fix
+Once CORS and CloudFront invalidation were resolved, the fetch request worked correctly.
+
 
 
 
