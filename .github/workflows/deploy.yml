@@ -20,3 +20,4 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: "us-east-1"
           SOURCE_DIR: "."   # Upload everything in the repo (index.html, styles.css, profile.jpg)
+          
