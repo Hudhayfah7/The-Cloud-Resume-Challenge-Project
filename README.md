@@ -11,7 +11,7 @@ You serve your site globally using CloudFront CDN.
 3. DNS (Route 53)
 Connect a domain name (optional but recommended).
 4. Visitor Counter
-Your site has a real-time visitor counter:
+Your site has a real-time visitor counter: 
 Use DynamoDB to store the count
 Use AWS Lambda to update count
 Expose Lambda through API Gateway
