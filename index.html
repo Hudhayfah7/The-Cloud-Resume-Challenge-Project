@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hudhayfah Khalid - Resume</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #f2f4f8;
+      color: #2c2c2c;
+    }
+
+    .resume {
+      max-width: 1100px;
+      margin: 40px auto;
+      background: #ffffff;
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      min-height: 100vh;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    /* LEFT COLUMN */
+    .sidebar {
+      background: linear-gradient(180deg, #1f2937, #111827);
+      color: #ffffff;
+      padding: 30px 25px;
+      text-align: center;
+    }
+
+    .profile-pic {
+      width: 160px;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 5px solid rgba(255,255,255,0.25);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+      margin-bottom: 10px;
+    }
+
+    .view-counter {
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 8px;
+      color: #d1d5db;
+    }
+
+    .sidebar h1 {
+      font-size: 26px;
+      margin: 15px 0 5px;
+    }
+
+    .sidebar h2 {
+      font-size: 14px;
+      font-weight: 400;
+      color: #cbd5e1;
+      margin-top: 0;
+    }
+
+    .contact p, .contact a {
+      font-size: 14px;
+      color: #e5e7eb;
+      margin: 6px 0;
+      text-decoration: none;
+    }
+
+    .section-title {
+      margin-top: 30px;
+      text-align: left;
+      font-size: 15px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      padding-bottom: 6px;
+    }
+
+    .sidebar ul {
+      padding-left: 18px;
+      text-align: left;
+      font-size: 14px;
+    }
+
+    /* RIGHT COLUMN */
+    .main {
+      padding: 35px 40px;
+    }
+
+    .main h3 {
+      margin-top: 0;
+      color: #1f2937;
+      border-bottom: 2px solid #e5e7eb;
+      padding-bottom: 6px;
+    }
+
+    .job {
+      margin-bottom: 25px;
+    }
+
+    .job h4 {
+      margin: 0;
+      font-size: 16px;
+    }
+
+    .job span {
+      font-size: 13px;
+      color: #6b7280;
+    }
+
+    .job ul {
+      margin-top: 8px;
+      padding-left: 18px;
+    }
+
+    .project {
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="resume">
+
+  <!-- LEFT COLUMN -->
+  <aside class="sidebar">
+
+    <!-- Profile Photo -->
+    <img src="profile.jpg" alt="Profile Photo" class="profile-pic" />
+
+    <!-- View Counter -->
+    <div class="view-counter">
+      👀 Profile Views: <span id="views">Loading...</span>
+    </div>
+
+    <h1>Hudhayfah Khalid</h1>
+    <h2>Cloud Support Engineer</h2>
+
+    <div class="contact">
+      <p>📧 <a href="mailto:hudhayfahkhalid@gmail.com">hudhayfahkhalid@gmail.com</a></p>
+      <p>🔗 <a href="https://www.linkedin.com/in/hudhayfah-khalid-3168732b7/">LinkedIn Profile</a></p>
+      <p>📍 HP13, Buckinghamshire</p>
+    </div>
+
+    <div class="section-title">Skills</div>
+    <ul>
+      <li><strong>Cloud Platforms:</strong> AWS (EC2, S3, CloudFormation, Amplify, IAM, CloudWatch)</li>
+      <li><strong>Serverless:</strong> AWS Lambda, API Gateway</li>
+      <li><strong>Database:</strong> DynamoDB, RDS, AWS Aurora</li>
+      <li><strong>CI/CD:</strong> Git, GitHub</li>
+      <li>Data Analytics & Problem Solving</li>
+      <li>Critical Thinking</li>
+      <li>Project Management & Leadership</li>
+      <li>Excellent Communication</li>
+      <li>Teamwork</li>
+      <li>Financial Project Modelling</li>
+      <li>Microsoft Excel (Filtering, VLOOKUP, PivotTables)</li>
+    </ul>
+
+    <div class="section-title">Certifications</div>
+    <ul>
+      <li>AWS Cloud Practitioner</li>
+      <li>AWS Solutions Architect</li>
+      <li>PRINCE2 7th Edition</li>
+      <li>ILM (Institute of Leadership & Management)</li>
+    </ul>
+
+    <div class="section-title">Education</div>
+    <ul>
+      <li><strong>Coventry University</strong><br/>BA Accounting and Finance – 2:1 (2020)</li>
+      <li><strong>The Royal Grammar School</strong><br/>GCSEs 11(A*-B) | A-Levels 3(A-C)</li>
+      <li><strong>The College of London</strong><br/>Business Level 3 Diploma – DDM</li>
+    </ul>
+  </aside>
+
+  <!-- RIGHT COLUMN -->
+  <main class="main">
+
+    <h3>Professional Summary</h3>
+    <p>
+      Motivated IT professional transitioning into cloud computing, supported by a strong foundation in network infrastructure and recently earned AWS Solutions Architect and Cloud Practitioner certifications. Proficient in cloud infrastructure, serverless technologies, and automation using Terraform and CloudFormation, with a demonstrated commitment to continuous upskilling across multiple cloud domains. Having completed several hands-on projects within AWS, I bring practical experience in applying best practices to real-world scenarios. Supported by PRINCE2 project management training, I am equipped to design secure, scalable AWS solutions and manage cloud initiatives with precision, delivering measurable value within consulting and technical environments.
+    </p>
+
+    <h3>Experience</h3>
+
+    <div class="job">
+      <h4>IT Quality Control – McLaren Automotive</h4>
+      <span>08/2024 – 05/2025 | Woking, United Kingdom</span>
+      <ul>
+        <li>Developed and executed test plans, identifying defects, and collaborating with development teams to implement effective solutions that improved system reliability and downtime.</li>
+        <li>Proactively identified and documented quality concerns, ensuring all vehicle reworks met company standards, maintaining compliance with industry certifications (ISO9001, IPC Class 3).</li>
+        <li>Lead cross-functional teams in root cause investigations using 8D, 5Y, and other problem-solving methodologies, driving data-driven solutions that improved production efficiency and reduced defect rates.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <h4>Management Accountant – Avery/Signature</h4>
+      <span>09/2022 – 05/2024 | Beaconsfield, United Kingdom</span>
+      <ul>
+        <li>Streamlined payment and expenditure processes, ensuring compliance with financial policies and procedures.</li>
+        <li>Enhanced accuracy in payroll, purchase orders, invoices, and statements, reducing discrepancies by 78 percent.</li>
+        <li>Leveraged advanced proficiency in Microsoft D365, Word, Excel to improve financial reporting and analysis, automating key processes and reducing processing time by 60 percent.</li>
+        <li>Orchestrated general ledger journal entries with scrupulous attention, guaranteeing accuracy and compliance and supporting successful audit outcomes.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <h4>Logistics Analyst – Beacon Secure</h4>
+      <span>04/2021 – 09/2022 | United Kingdom</span>
+      <ul>
+        <li>Spearheaded the strategic procurement, warehousing, and dispatch of vital COVID healthcare tests across the United Kingdom.</li>
+        <li>Orchestrated oversight of all transportation modalities with rigorous quality assurance protocols to ensure compliance with governmental regulations.</li>
+        <li>Optimised workflows and healthcare resource allocation using Microsoft Excel for forecasting, budget planning and scheduling improvements.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <h4>Technical Reservation Agent – Thrifty Car and Van Rental</h4>
+      <span>03/2017 – 09/2018 | High Wycombe, United Kingdom</span>
+      <ul>
+        <li>Delivered technical support for online reservations using the Silver Bullet platform, resolving issues efficiently.</li>
+        <li>Surpassed KPI targets by promoting tailored vehicle solutions and increasing revenue performance.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <h4>Tutor – Milestone Tutoring</h4>
+      <span>10/2015 – 08/2016 | High Wycombe, United Kingdom</span>
+      <ul>
+        <li>Developed customised pedagogical strategies and study resources tailored to individual students.</li>
+        <li>Mentored students for 11+ examinations, resulting in measurable performance improvements.</li>
+      </ul>
+    </div>
+
+    <h3>Projects</h3>
+
+    <div class="project">
+      <strong>Serverless Web Application</strong>
+      <p>Developed a full stack serverless web application with Lambda and API Gateway handling over 500 simulated requests per day.</p>
+    </div>
+
+    <div class="project">
+      <strong>End to End Database</strong>
+      <p>Created an analysis of a Spotify dataset, providing insights into music trends, user performance and platform efficiency using S3, Athena, Glue and QuickSight.</p>
+    </div>
+
+    <div class="project">
+      <strong>The Resume Challenge</strong>
+      <p>Built a personalised resume website involving frontend design, serverless backend, infrastructure as code, and automated deployment using HTML, CSS, JavaScript, Python, Amazon S3, CloudFront, DynamoDB, Lambda, API Gateway and GitHub Actions.</p>
+    </div>
+
+  </main>
+</div>
+
+<!-- ----------------------------------------------------- -->
+<!-- VIEW COUNTER JAVASCRIPT (Embedded in HTML)            -->
+<!-- ----------------------------------------------------- -->
+<script>
+  const endpoint = "https://me3fiflbzxxebogoe5gryyzpqu0rtaat.lambda-url.us-east-1.on.aws/";
+
+  function animateCounter(id, value) {
+    let element = document.getElementById(id);
+    let start = 0;
+    let end = value;
+    let duration = 900;
+    let stepTime = 20;
+
+    let step = (end - start) / (duration / stepTime);
+
+    let timer = setInterval(() => {
+      start += step;
+      if (start >= end) {
+        start = end;
+        clearInterval(timer);
+      }
+      element.innerText = Math.floor(start);
+    }, stepTime);
+  }
+
+  fetch(endpoint)
+    .then(response => response.json())
+    .then(data => {
+      animateCounter("views", data.views);
+    })
+    .catch(() => {
+      document.getElementById("views").innerText = "Error";
+    });
+</script>
+
+</body>
+</html>
